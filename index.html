@@ -114,6 +114,17 @@ header.nav.stuck{border-bottom-color:var(--line);box-shadow:0 8px 24px -20px rgb
 .nav-links a:hover::after{right:0}
 .nav-cta{display:flex;align-items:center;gap:18px}
 .nav-cta .btn{padding:11px 20px;font-size:14.5px}
+
+/* boutons tel / email dans la barre du haut */
+.nav-contact{display:flex;align-items:center;gap:9px}
+.nav-ico{
+  width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:50%;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink-2);text-decoration:none;
+  transition:transform .22s cubic-bezier(.2,.7,.3,1), border-color .2s, color .2s, box-shadow .2s, background .2s;
+}
+.nav-ico svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav-ico:hover{color:var(--terra-d);border-color:var(--terra);background:rgba(190,79,44,.06);transform:translateY(-2px);box-shadow:0 8px 16px -10px rgba(147,56,28,.8)}
+.nav-ico:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
 .burger{display:none;background:none;border:0;padding:8px;cursor:pointer}
 .burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px}
 
@@ -375,27 +386,28 @@ details .ans{padding:0 15% 28px 0;color:var(--ink-2);font-size:16px;animation:fa
 .direct a{color:var(--terra-d);text-decoration:none;border-bottom:1px solid rgba(190,79,44,.3);font-weight:500}
 .direct a:hover{border-bottom-color:var(--terra)}
 
-form{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:36px 34px 32px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
-#form-fields > * + *{margin-top:18px}
-#form-fields > .consent{margin-top:22px}
-.fld{display:flex;flex-direction:column;gap:8px}
-.fld label{font-family:var(--title);font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--ink-3)}
-.fld input,.fld select,.fld textarea{
-  background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:13px 15px;font-size:15.5px;
-  transition:border-color .2s, box-shadow .2s;width:100%;font-family:var(--text);
+/* ---------- carte prise de rendez-vous ---------- */
+.rdv-card{
+  background:var(--cream);border:1px solid var(--line);border-radius:var(--r);
+  padding:44px 38px 38px;text-align:center;
 }
-.fld textarea{resize:vertical;min-height:96px}
-.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 3px rgba(190,79,44,.12)}
-.consent{display:flex;gap:11px;align-items:flex-start;font-size:13px;color:var(--ink-3);line-height:1.55}
-.consent input{margin-top:3px;accent-color:var(--terra);width:15px;height:15px;flex:none}
-form .btn{width:100%;margin-top:24px}
-.form-ok{display:none;text-align:center;padding:26px 10px 6px}
-.form-ok.on{display:block;animation:fade .5s ease}
-.form-ok .tick{width:46px;height:46px;border-radius:50%;background:var(--olive);display:grid;place-items:center;margin:0 auto 18px}
-.form-ok .tick svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.form-ok h3{font-size:23px}
-.form-ok p{margin-top:10px;color:var(--ink-2);font-size:15px}
+.rdv-card .rdv-ico{
+  width:60px;height:60px;border-radius:50%;margin:0 auto 24px;display:grid;place-items:center;
+  background:rgba(190,79,44,.09);border:1px solid rgba(190,79,44,.22);
+}
+.rdv-card .rdv-ico svg{width:27px;height:27px;stroke:var(--terra-d);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.rdv-card h3{font-size:clamp(23px,2.4vw,28px);letter-spacing:-.03em;line-height:1.2}
+.rdv-card > p{margin-top:14px;color:var(--ink-2);font-size:16px;max-width:38ch;margin-inline:auto}
+.rdv-card .btn{width:100%;margin-top:28px}
+.rdv-meta{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:11px;text-align:left}
+.rdv-meta li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:var(--ink-3)}
+.rdv-meta svg{width:16px;height:16px;flex:none;margin-top:3px;stroke:var(--olive);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rdv-or{
+  margin-top:26px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:14.5px;color:var(--ink-3);
+}
+.rdv-or a{color:var(--terra-d);text-decoration:none;border-bottom:1px solid rgba(190,79,44,.3);font-weight:500}
+.rdv-or a:hover{border-bottom-color:var(--terra)}
 
 /* ---------- footer ---------- */
 footer{background:var(--ink);color:rgba(251,246,236,.62);padding:62px 0 32px}
@@ -596,9 +608,7 @@ header.nav.stuck .nav-in{height:62px}
 .band.in .band-in .btn{transition-delay:.4s}
 
 /* --- champs de formulaire --- */
-.fld input,.fld select,.fld textarea{transition:border-color .25s, box-shadow .25s, transform .25s var(--ease)}
-.fld input:focus,.fld select:focus,.fld textarea:focus{transform:translateY(-1px)}
-.form-ok .tick{animation:popIn .5s var(--ease) both}
+.rdv-card .rdv-ico{animation:popIn .5s var(--ease) both}
 
 /* --- flèche de défilement --- */
 .scroll-hint{
@@ -670,8 +680,7 @@ header.nav.stuck .nav-in{height:62px}
   .cards{grid-template-columns:1fr}
   .collect{grid-template-columns:1fr}
   .calc-in,.calc-out{padding:32px 24px}
-  .row{grid-template-columns:1fr}
-  form{padding:26px 20px 24px}
+  .rdv-card{padding:34px 22px 28px}
   details .ans{padding-right:0}
   summary{font-size:18px}
   .hero{padding:52px 0 74px}
@@ -708,6 +717,14 @@ header.nav.stuck .nav-in{height:62px}
       <a href="#formules">L'offre</a>
     </nav>
     <div class="nav-cta">
+      <div class="nav-contact">
+        <a class="nav-ico" href="tel:+33651271556" aria-label="Appeler le 06 51 27 15 56" title="06 51 27 15 56">
+          <svg viewBox="0 0 20 20"><path d="M6.6 3.2 8.2 6 6.8 7.6c.6 1.7 2 3.1 3.6 3.6L12 9.8l2.8 1.6v3.1c0 .9-.8 1.6-1.7 1.5C7.6 15.4 3.8 11.6 3.2 6c-.1-.9.6-1.7 1.5-1.7h1.9Z"/></svg>
+        </a>
+        <a class="nav-ico" href="mailto:loic.hachet@lhabitue.com" aria-label="Envoyer un email à loic.hachet@lhabitue.com" title="loic.hachet@lhabitue.com">
+          <svg viewBox="0 0 20 20"><rect x="2.6" y="4.6" width="14.8" height="10.8" rx="1.6"/><path d="m3.1 5.6 6.9 4.9 6.9-4.9"/></svg>
+        </a>
+      </div>
       <a class="btn btn-primary" href="#rdv">Réserver 20 minutes</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -1222,47 +1239,25 @@ header.nav.stuck .nav-in{height:62px}
     </div>
 
     <div class="rv">
-      <form id="lead" novalidate>
-        <div id="form-fields">
-          <div class="row">
-            <div class="fld"><label for="f-nom">Votre nom</label><input id="f-nom" name="nom" type="text" placeholder="Camille Roux" required></div>
-            <div class="fld"><label for="f-resto">Nom du restaurant</label><input id="f-resto" name="restaurant" type="text" placeholder="Le Comptoir des Halles" required></div>
-          </div>
-          <div class="row">
-            <div class="fld"><label for="f-ville">Ville</label><input id="f-ville" name="ville" type="text" placeholder="Lyon" required></div>
-            <div class="fld"><label for="f-tel">Téléphone</label><input id="f-tel" name="tel" type="tel" placeholder="06 12 34 56 78" required></div>
-          </div>
-          <div class="fld"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" placeholder="camille@lecomptoir.fr" required></div>
-          <div class="row">
-            <div class="fld">
-              <label for="f-couverts">Couverts par semaine</label>
-              <select id="f-couverts" name="couverts">
-                <option>Moins de 150</option><option selected>150 à 400</option><option>400 à 800</option><option>Plus de 800</option>
-              </select>
-            </div>
-            <div class="fld">
-              <label for="f-fichier">Fichier client existant</label>
-              <select id="f-fichier" name="fichier">
-                <option>Oui, exploitable</option><option>Oui, mais en vrac</option><option selected>Non, à créer</option><option>Je ne sais pas</option>
-              </select>
-            </div>
-          </div>
-          <div class="fld"><label for="f-msg">Votre situation en deux lignes <span class="muted">(facultatif)</span></label><textarea id="f-msg" name="message" placeholder="Le week-end est plein, le début de semaine beaucoup moins..."></textarea></div>
-          <input type="hidden" name="_subject" value="Nouvelle demande - L'Habitué">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <label class="consent"><input type="checkbox" id="f-ok" required><span>J'accepte d'être recontacté au sujet de ma demande. Mes coordonnées ne seront ni revendues ni transmises à un tiers.</span></label>
-          <button class="btn btn-dark" type="submit">Recevoir mon estimation
-            <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
-          </button>
+      <div class="rdv-card">
+        <div class="rdv-ico">
+          <svg viewBox="0 0 24 24"><rect x="3.2" y="5" width="17.6" height="15.4" rx="2.4"/><path d="M3.2 9.6h17.6M8.2 3.2v3.6M15.8 3.2v3.6"/><path d="m9.4 14.4 1.9 1.9 3.5-3.9"/></svg>
         </div>
-        <div class="form-ok" id="form-ok">
-          <div class="tick"><svg viewBox="0 0 24 24"><path d="m5 12.5 5 5L19 7"/></svg></div>
-          <h3>C'est noté, merci.</h3>
-          <p>On revient vers vous sous 24 heures ouvrées avec une première estimation chiffrée pour votre salle.</p>
+        <h3>Choisissez votre créneau</h3>
+        <p>Vous voyez mes disponibilités en direct et vous choisissez l'heure qui vous arrange.</p>
+        <a class="btn btn-dark" href="https://calendly.com/loic-hachet-lhabitue/30min" target="_blank" rel="noopener">Prendre rendez-vous
+          <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </a>
+        <ul class="rdv-meta">
+          <li><svg viewBox="0 0 20 20"><path d="m4 10.6 3.4 3.4L16 5"/></svg><span>Confirmation immédiate, avec le lien d'appel dans votre agenda.</span></li>
+          <li><svg viewBox="0 0 20 20"><path d="m4 10.6 3.4 3.4L16 5"/></svg><span>Annulable ou déplaçable en un clic, sans avoir à m'écrire.</span></li>
+          <li><svg viewBox="0 0 20 20"><path d="m4 10.6 3.4 3.4L16 5"/></svg><span>Gratuit et sans engagement : vous repartez avec votre estimation.</span></li>
+        </ul>
+        <div class="rdv-or">
+          Pas le temps de réserver ? Appelez au <a href="tel:+33651271556">06 51 27 15 56</a>
+          ou écrivez à <a href="mailto:loic.hachet@lhabitue.com">loic.hachet@lhabitue.com</a>.
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </section>
@@ -1504,52 +1499,6 @@ header.nav.stuck .nav-in{height:62px}
   inputs.forEach(function(inp){ inp.addEventListener('input', function(){ refresh(false); }); });
   refresh(true);
 
-  /* ============ FORMULAIRE ============ */
-  var form = document.getElementById('lead');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var required = form.querySelectorAll('[required]');
-    var ok = true;
-    for(var i=0;i<required.length;i++){
-      var f = required[i];
-      var bad = (f.type === 'checkbox') ? !f.checked : !f.value.trim() || (f.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.value));
-      if(bad){
-        ok = false;
-        if(f.type !== 'checkbox'){
-          f.style.borderColor = 'var(--terra)';
-          f.animate ? f.animate([
-            {transform:'translateX(0)'},{transform:'translateX(-5px)'},{transform:'translateX(5px)'},
-            {transform:'translateX(-3px)'},{transform:'translateX(0)'}
-          ], {duration:320, easing:'ease-in-out'}) : null;
-          f.addEventListener('input', function(){ this.style.borderColor = ''; }, {once:true});
-        }
-      }
-    }
-    if(!ok) return;
-
-    var btn = form.querySelector('button[type="submit"]');
-    var btnLabel = btn.innerHTML;
-    btn.disabled = true;
-    btn.style.opacity = '0.65';
-
-    var data = new FormData(form);
-    fetch('https://formsubmit.co/ajax/loic.hachet@lhabitue.com', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: data
-    })
-    .then(function(res){ return res.json(); })
-    .then(function(){
-      document.getElementById('form-fields').style.display = 'none';
-      document.getElementById('form-ok').classList.add('on');
-    })
-    .catch(function(){
-      btn.disabled = false;
-      btn.style.opacity = '';
-      btn.innerHTML = btnLabel;
-      alert("Une erreur est survenue lors de l'envoi. Merci de réessayer, ou de nous appeler directement au 06 51 27 15 56.");
-    });
-  });
 })();
 </script>
 </body>
