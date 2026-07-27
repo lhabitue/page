@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Habitué | La newsletter qui remplit votre salle</title>
+<meta name="description" content="Chaque semaine, on écrit et on envoie à vos clients l'email qui leur redonne envie de réserver. Offres, menus, soirées, nouveautés. Vous cuisinez, on remplit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+<script src="https://embed.typeform.com/next/embed.js" defer></script>
+<style>
+/* ============================================================
+   L'HABITUÉ
+   Typographie : Outfit (titres) + DM Sans (texte)
+   ============================================================ */
+
+:root{
+  --cream:#FBF6EC;
+  --paper:#FFFCF6;
+  --ink:#17130F;
+  --ink-2:#4A4139;
+  --ink-3:#7C7168;
+  --terra:#BE4F2C;
+  --terra-d:#93381C;
+  --terra-l:#E8B7A3;
+  --olive:#4C5A41;
+  --brass:#AC8B4C;
+  --line:rgba(23,19,15,.13);
+  --line-2:rgba(23,19,15,.07);
+  --shadow:0 1px 2px rgba(23,19,15,.04), 0 8px 28px -12px rgba(23,19,15,.18);
+  --shadow-lg:0 2px 4px rgba(23,19,15,.05), 0 30px 60px -25px rgba(23,19,15,.34);
+  --title:"Outfit","Segoe UI",system-ui,sans-serif;
+  --text:"DM Sans","Segoe UI",system-ui,sans-serif;
+  --r:14px;
+  --wrap:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--text);font-size:17px;line-height:1.66;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.24;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+img{max-width:100%;display:block;color:transparent}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+
+h1,h2,h3,h4{font-family:var(--title);font-weight:600;margin:0;line-height:1.1;letter-spacing:-.028em}
+p{margin:0}
+
+.wrap{width:min(100% - 44px, var(--wrap));margin-inline:auto}
+.narrow{width:min(100% - 44px, 900px);margin-inline:auto}
+
+/* ---------- utilitaires ---------- */
+.eyebrow{
+  font-family:var(--title);font-size:11.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--terra-d);display:flex;align-items:center;gap:.75em;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--terra);opacity:.6;flex:none;border-radius:2px}
+.eyebrow.center{justify-content:center}
+.lead{font-size:19px;line-height:1.62;color:var(--ink-2)}
+.muted{color:var(--ink-3)}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+.sec{padding:104px 0}
+.sec-tight{padding:80px 0}
+.num{font-family:var(--title);font-size:12.5px;letter-spacing:.08em;color:var(--brass);font-variant-numeric:tabular-nums;font-weight:700}
+
+/* placeholder photo (fond chaud visible pendant le chargement) */
+.ph{background:linear-gradient(150deg,#E4C9B6 0%,#C98F6E 48%,#7C5A44 100%);overflow:hidden;position:relative}
+.ph img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- boutons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+  padding:15px 27px;border-radius:100px;border:1px solid transparent;
+  font-family:var(--title);font-size:15.5px;font-weight:600;letter-spacing:-.005em;text-decoration:none;cursor:pointer;
+  transition:transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s, background .2s, color .2s, border-color .2s;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--terra);color:#fff;box-shadow:0 1px 1px rgba(147,56,28,.3), 0 10px 24px -12px rgba(147,56,28,.85)}
+.btn-primary:hover{background:var(--terra-d);transform:translateY(-2px);box-shadow:0 2px 3px rgba(147,56,28,.28), 0 18px 34px -14px rgba(147,56,28,.9)}
+.btn-ghost{border-color:var(--line);background:transparent;color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px);background:rgba(23,19,15,.03)}
+.btn-dark{background:var(--ink);color:var(--cream)}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-light{background:var(--cream);color:var(--ink)}
+.btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-arrow{width:1em;height:1em;flex:none;transition:transform .25s}
+.btn:hover .btn-arrow{transform:translateX(3px)}
+
+/* ---------- nav ---------- */
+header.nav{
+  position:sticky;top:0;z-index:80;
+  background:rgba(251,246,236,.84);backdrop-filter:blur(14px) saturate(1.3);
+  border-bottom:1px solid transparent;transition:border-color .3s, box-shadow .3s;
+}
+header.nav.stuck{border-bottom-color:var(--line);box-shadow:0 8px 24px -20px rgba(23,19,15,.6)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.brand{display:flex;align-items:center;gap:.36em;text-decoration:none}
+.brand b{font-family:var(--title);font-weight:700;font-size:22px;letter-spacing:-.045em}
+.brand i{width:5px;height:5px;border-radius:50%;background:var(--terra);display:block}
+.brand span{font-family:var(--title);font-size:10.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);margin-left:.4em}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{text-decoration:none;font-size:14.5px;font-weight:500;color:var(--ink-2);position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:var(--terra);transition:right .3s cubic-bezier(.2,.7,.3,1)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:flex;align-items:center;gap:18px}
+.nav-cta .btn{padding:11px 20px;font-size:14.5px}
+.burger{display:none;background:none;border:0;padding:8px;cursor:pointer}
+.burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:70px 0 92px;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;top:-380px;right:-260px;width:900px;height:900px;border-radius:50%;
+  background:radial-gradient(circle, rgba(190,79,44,.12), rgba(190,79,44,0) 62%);pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;position:relative;z-index:2}
+.hero h1{font-size:clamp(43px,5.5vw,71px);margin:24px 0 0;font-weight:600;letter-spacing:-.04em;line-height:1.03}
+.hero h1 b{color:var(--terra);font-weight:600;position:relative;white-space:nowrap}
+.hero h1 b::after{
+  content:"";position:absolute;left:0;right:0;bottom:.07em;height:.09em;border-radius:4px;
+  background:var(--terra);opacity:.28;
+}
+.hero .lead{margin-top:24px;max-width:34em}
+.hero .lead strong{font-weight:600;color:var(--ink)}
+.hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.hero-note{margin-top:26px;font-size:13.5px;color:var(--ink-3);display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.hero-note b{font-weight:500;color:var(--ink-2)}
+.dot-sep{width:3px;height:3px;border-radius:50%;background:var(--line);display:inline-block}
+
+/* visuel hero : photo + maquette email */
+.hero-visual{position:relative;padding-bottom:52px;padding-left:34px}
+.hero-photo{
+  border-radius:20px;aspect-ratio:4/4.2;box-shadow:var(--shadow-lg);
+  border:1px solid rgba(23,19,15,.08);
+}
+.hero-photo::after{
+  content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;
+  background:linear-gradient(190deg, rgba(23,19,15,0) 45%, rgba(23,19,15,.34) 100%);
+}
+.hero-badge{
+  position:absolute;top:20px;left:54px;z-index:3;
+  background:rgba(251,246,236,.94);backdrop-filter:blur(6px);
+  border-radius:100px;padding:8px 15px;font-family:var(--title);font-size:12px;font-weight:600;
+  letter-spacing:.02em;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);
+}
+.hero-badge i{width:7px;height:7px;border-radius:50%;background:var(--olive);display:block;flex:none;box-shadow:0 0 0 3px rgba(76,90,65,.18)}
+.mail{
+  position:absolute;left:-34px;bottom:0;width:min(78%,340px);z-index:4;
+  background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg);
+}
+.mail-bar{display:flex;align-items:center;gap:6px;padding:11px 15px;border-bottom:1px solid var(--line-2);background:rgba(23,19,15,.02)}
+.mail-bar i{width:8px;height:8px;border-radius:50%;background:var(--line);display:block}
+.mail-bar small{margin-left:auto;font-size:10.5px;color:var(--ink-3)}
+.mail-body{padding:16px 18px 18px}
+.mail-from{display:flex;align-items:center;gap:9px;font-size:11.5px;color:var(--ink-3);line-height:1.35}
+.mail-av{width:28px;height:28px;border-radius:50%;background:var(--olive);color:#fff;display:grid;place-items:center;font-family:var(--title);font-size:12px;font-weight:600;flex:none}
+.mail-from b{display:block;color:var(--ink);font-weight:600;font-size:12.5px}
+.mail-subject{font-family:var(--title);font-size:16.5px;font-weight:600;margin:13px 0 0;line-height:1.25;letter-spacing:-.025em}
+.mail-pic{height:88px;border-radius:9px;margin:12px 0}
+.mail-txt{font-size:12.5px;color:var(--ink-2);line-height:1.6}
+.mail-txt b{color:var(--ink);font-weight:600}
+.mail-btn{display:inline-block;background:var(--terra);color:#fff;font-family:var(--title);font-size:12px;font-weight:600;padding:9px 17px;border-radius:100px;margin-top:12px}
+.kpi{
+  position:absolute;right:-14px;bottom:74px;z-index:5;background:var(--paper);border:1px solid var(--line);
+  border-radius:13px;padding:14px 18px;box-shadow:var(--shadow);animation:bob 7s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.kpi .k{font-family:var(--title);font-size:26px;font-weight:700;line-height:1;color:var(--terra);letter-spacing:-.03em}
+.kpi .l{font-size:11px;color:var(--ink-3);margin-top:5px;line-height:1.4}
+
+/* ---------- bandeau chiffres ---------- */
+.stats{border-block:1px solid var(--line);background:var(--paper)}
+.stats-in{display:grid;grid-template-columns:repeat(3,1fr)}
+.stat{padding:44px 38px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat .v{font-family:var(--title);font-weight:700;font-size:clamp(38px,4.2vw,52px);line-height:1;letter-spacing:-.045em}
+.stat .v sup{font-size:.4em;vertical-align:super;color:var(--brass);font-weight:700;margin-left:.15em;letter-spacing:0}
+.stat .t{margin-top:12px;font-size:14.5px;color:var(--ink-2);max-width:26em}
+.stat-src{padding:0 38px 26px;font-size:11.5px;color:var(--ink-3);line-height:1.6}
+
+/* ---------- titres de section ---------- */
+.sec-head{display:grid;grid-template-columns:1.08fr .92fr;gap:20px 66px;align-items:end}
+.sec-head .eyebrow{grid-column:1/-1}
+.sec-head h2{font-size:clamp(31px,3.6vw,45px);margin:8px 0 0;max-width:20ch;letter-spacing:-.035em}
+.sec-head p{font-size:17.5px;color:var(--ink-2);max-width:46ch;padding-bottom:5px}
+.sec-head.center{display:block;max-width:48ch;margin-inline:auto;text-align:center}
+.sec-head.center h2{max-width:none;margin-top:20px}
+.sec-head.center p{max-width:none;margin-top:20px;padding-bottom:0}
+.sec-head.solo{display:block}
+.sec-head.solo h2{margin-top:20px;max-width:22ch}
+
+/* ---------- samedi / mardi ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:56px;overflow-x:clip;overflow-y:visible}
+.shot{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/11;box-shadow:var(--shadow)}
+.shot .ph{position:absolute;inset:0}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,19,15,.05) 30%,rgba(23,19,15,.72) 100%)}
+.shot .cap{position:absolute;left:24px;right:24px;bottom:20px;z-index:2;color:#fff}
+.shot .cap .d{font-family:var(--title);font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;opacity:.85}
+.shot .cap .n{font-family:var(--title);font-size:26px;font-weight:600;margin-top:6px;letter-spacing:-.03em}
+.shot .cap .s{font-size:13.5px;opacity:.82;margin-top:4px}
+.shot.dim .ph{filter:saturate(.72) brightness(.88)}
+.split-note{margin-top:24px;font-size:15.5px;color:var(--ink-3);text-align:center;max-width:62ch;margin-inline:auto}
+
+/* ---------- douleurs ---------- */
+.pains{display:grid;grid-template-columns:repeat(2,1fr);margin-top:58px;border-top:1px solid var(--line)}
+.pain{padding:32px 40px 32px 0;border-bottom:1px solid var(--line);display:flex;gap:20px}
+.pain:nth-child(odd){border-right:1px solid var(--line);padding-right:40px}
+.pain:nth-child(even){padding-left:40px}
+.pain q{font-family:var(--title);font-size:19px;font-weight:500;line-height:1.4;letter-spacing:-.02em;quotes:"«\00a0" "\00a0»";display:block}
+.pain .who{margin-top:10px;font-size:12.5px;color:var(--ink-3)}
+.pain .mark{font-family:var(--title);font-size:34px;font-weight:700;color:var(--terra-l);line-height:.9;flex:none}
+
+/* ---------- étapes ---------- */
+.steps{margin-top:58px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.step{padding:32px 30px 40px 0;position:relative}
+.step + .step{border-left:1px solid var(--line);padding-left:30px}
+.step::before{content:"";position:absolute;top:-3.5px;left:0;width:6px;height:6px;background:var(--terra);border-radius:50%}
+.step + .step::before{left:30px}
+.step h3{font-size:20px;margin:16px 0 10px}
+.step p{font-size:14.8px;color:var(--ink-2)}
+
+/* ---------- leviers ---------- */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:54px}
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px 30px;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s, border-color .3s;
+}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(23,19,15,.2)}
+.card .ico{width:32px;height:32px;color:var(--terra);margin-bottom:20px}
+.card .ico svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:18.5px;margin-bottom:10px}
+.card p{font-size:14.6px;color:var(--ink-2)}
+.card .tag{display:inline-block;margin-top:16px;font-family:var(--title);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
+
+/* ---------- collecte ---------- */
+.collect{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:54px}
+.opt{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:0 0 38px;position:relative;overflow:hidden}
+.opt.hi{border-color:rgba(190,79,44,.4);box-shadow:0 24px 50px -34px rgba(190,79,44,.6)}
+.opt-pic{height:190px;position:relative}
+.opt-pic .ph{position:absolute;inset:0}
+.opt-pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,19,15,.18),rgba(23,19,15,.5))}
+.opt-inner{padding:0 34px}
+.opt .badge{
+  position:absolute;top:18px;left:18px;z-index:3;background:var(--terra);color:#fff;font-family:var(--title);
+  font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 13px;border-radius:100px;
+}
+.opt-float{
+  position:absolute;right:22px;bottom:-30px;z-index:3;width:86px;height:86px;border-radius:14px;
+  background:var(--ink);padding:9px;box-shadow:var(--shadow-lg);border:3px solid var(--paper);
+}
+.opt-float svg{width:100%;height:100%;display:block}
+.opt-float.sheet{background:var(--paper);border-color:var(--paper);display:grid;place-items:center;box-shadow:var(--shadow-lg), inset 0 0 0 1px var(--line)}
+.opt-float.sheet svg{width:38px;height:38px;stroke:var(--ink-2);fill:none;stroke-width:1.3}
+.opt h3{font-size:23px;margin:34px 0 12px}
+.opt > .opt-inner > p{color:var(--ink-2);font-size:15.5px}
+.opt ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.opt li{display:flex;gap:12px;font-size:14.8px;color:var(--ink-2);line-height:1.5}
+.opt li svg{width:16px;height:16px;flex:none;margin-top:5px;stroke:var(--olive);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- témoignages ---------- */
+.testi-sec{background:var(--paper);border-block:1px solid var(--line)}
+.testis{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.testi{
+  background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px 26px;
+  display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s;
+}
+.testi:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.stars svg{width:15px;height:15px;fill:var(--brass)}
+.testi blockquote{margin:0;font-family:var(--title);font-size:17.5px;font-weight:500;line-height:1.5;letter-spacing:-.02em}
+.testi .detail{margin-top:16px;font-size:14.5px;color:var(--ink-2)}
+.testi .who{display:flex;align-items:center;gap:13px;margin-top:auto;padding-top:26px}
+.testi .who .ph{width:50px;height:50px;border-radius:50%;flex:none;border:2px solid var(--paper);box-shadow:0 0 0 1px var(--line)}
+.testi .who .n{font-family:var(--title);font-size:15px;font-weight:600;letter-spacing:-.02em}
+.testi .who .r{font-size:12.5px;color:var(--ink-3);line-height:1.35}
+.testi-note{margin-top:26px;text-align:center;font-size:12.5px;color:var(--ink-3)}
+
+/* ---------- calculateur ---------- */
+.calc-sec{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.calc-sec::after{content:"";position:absolute;left:-200px;bottom:-300px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(190,79,44,.25),transparent 62%)}
+.calc-sec .eyebrow{color:var(--terra-l)}
+.calc-sec .eyebrow::before{background:var(--terra-l)}
+.calc-sec h2{color:var(--cream)}
+.calc-sec .sec-head p{color:rgba(251,246,236,.68)}
+.calc{display:grid;grid-template-columns:1.05fr .95fr;margin-top:54px;border:1px solid rgba(251,246,236,.16);border-radius:18px;overflow:hidden;position:relative;z-index:2;background:rgba(251,246,236,.03)}
+.calc-in{padding:42px 44px}
+.calc-out{padding:42px 44px;background:rgba(251,246,236,.055);border-left:1px solid rgba(251,246,236,.14)}
+.field + .field{margin-top:32px}
+.field-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.field label{font-size:14.5px;color:rgba(251,246,236,.8)}
+.field .val{font-family:var(--title);font-size:22px;font-weight:700;color:var(--cream);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:2px;margin-top:18px;
+  background:rgba(251,246,236,.22);border-radius:2px;outline:none;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:19px;height:19px;border-radius:50%;background:var(--terra);border:3px solid var(--ink);box-shadow:0 0 0 1px rgba(190,79,44,.6);cursor:grab;transition:transform .15s}
+input[type=range]::-webkit-slider-thumb:active{transform:scale(1.14);cursor:grabbing}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--terra);border:3px solid var(--ink);box-shadow:0 0 0 1px rgba(190,79,44,.6);cursor:grab}
+.field .hint{font-size:12.5px;color:rgba(251,246,236,.45);margin-top:10px}
+.out-label{font-family:var(--title);font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(251,246,236,.5)}
+.out-big{font-family:var(--title);font-weight:700;font-size:clamp(44px,5.4vw,64px);line-height:1;margin:14px 0 0;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.out-big span{font-size:.46em;color:var(--terra-l);margin-left:.12em;letter-spacing:-.03em}
+.out-sub{margin-top:12px;color:rgba(251,246,236,.62);font-size:15px}
+.out-rows{margin-top:32px;padding-top:26px;border-top:1px solid rgba(251,246,236,.16);display:grid;gap:15px}
+.out-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-size:15px}
+.out-row span:first-child{color:rgba(251,246,236,.65)}
+.out-row span:last-child{font-family:var(--title);font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.calc-note{margin-top:28px;font-size:12.5px;line-height:1.65;color:rgba(251,246,236,.45)}
+.calc-cta{margin-top:30px}
+
+/* ---------- formule ---------- */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px;align-items:start}
+.plans.one{grid-template-columns:1fr;max-width:460px;margin-inline:auto}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:36px 30px 34px;display:flex;flex-direction:column;height:100%;position:relative}
+.plan.hi{border-color:var(--ink);box-shadow:var(--shadow-lg);padding-top:42px}
+.plan .badge{position:absolute;top:-11px;left:30px;background:var(--ink);color:var(--cream);font-family:var(--title);font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 13px;border-radius:100px}
+.plan .kicker{font-family:var(--title);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+.plan h3{font-size:25px;margin-bottom:8px;letter-spacing:-.035em}
+.plan .price{font-family:var(--title);font-weight:700;font-size:clamp(42px,5.4vw,58px);line-height:1;letter-spacing:-.045em;margin:6px 0 16px}
+.plan .price span{font-size:.36em;font-weight:600;color:var(--ink-3);letter-spacing:0;margin-left:.2em}
+.plan .pitch{font-size:15px;color:var(--ink-2);min-height:3.2em}
+.plan ul{list-style:none;padding:26px 0 0;margin:24px 0 30px;display:grid;gap:12px;border-top:1px solid var(--line-2)}
+.plan li{display:flex;gap:11px;font-size:14.6px;color:var(--ink-2);line-height:1.5}
+.plan li svg{width:15px;height:15px;flex:none;margin-top:5px;stroke:var(--terra);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.plan li b{font-weight:600;color:var(--ink)}
+.plan .btn{margin-top:auto;width:100%}
+.plans-foot{margin-top:26px;text-align:center;font-size:14px;color:var(--ink-3)}
+
+/* ---------- faq ---------- */
+.faq{margin-top:50px;border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{
+  list-style:none;cursor:pointer;padding:25px 46px 25px 0;position:relative;
+  font-family:var(--title);font-size:19.5px;font-weight:500;line-height:1.35;letter-spacing:-.025em;transition:color .2s;
+}
+summary::-webkit-details-marker{display:none}
+summary:hover{color:var(--terra-d)}
+summary::after{
+  content:"";position:absolute;right:6px;top:32px;width:11px;height:11px;
+  border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);
+  transform:rotate(45deg);transition:transform .3s cubic-bezier(.2,.7,.3,1);border-radius:2px;
+}
+details[open] summary::after{transform:rotate(-135deg);top:36px}
+details .ans{padding:0 15% 28px 0;color:var(--ink-2);font-size:16px;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+
+/* ---------- bandeau photo CTA ---------- */
+.band{position:relative;min-height:390px;display:grid;place-items:center;text-align:center;overflow:hidden}
+.band .ph{position:absolute;left:0;right:0;top:-14%;height:128%;will-change:transform}
+.band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,19,15,.62),rgba(23,19,15,.78))}
+.band-in{position:relative;z-index:2;color:#fff;padding:76px 22px;max-width:720px}
+.band-in h2{font-size:clamp(29px,3.4vw,42px);color:#fff;letter-spacing:-.035em;line-height:1.15}
+.band-in p{margin-top:16px;color:rgba(255,255,255,.78);font-size:17.5px}
+.band-in .btn{margin-top:28px}
+
+/* ---------- contact ---------- */
+.contact-sec{background:var(--paper);border-top:1px solid var(--line)}
+.contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
+.contact-aside h2{font-size:clamp(30px,3.4vw,42px);margin:20px 0 0;letter-spacing:-.035em}
+.contact-aside p{margin-top:20px;color:var(--ink-2)}
+.aside-list{list-style:none;padding:0;margin:32px 0 0;display:grid;gap:16px}
+.aside-list li{display:flex;gap:13px;font-size:15px;color:var(--ink-2)}
+.aside-list svg{width:17px;height:17px;flex:none;margin-top:4px;stroke:var(--terra);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.direct{margin-top:34px;padding-top:26px;border-top:1px solid var(--line);font-size:15px}
+.direct a{color:var(--terra-d);text-decoration:none;border-bottom:1px solid rgba(190,79,44,.3);font-weight:500}
+.direct a:hover{border-bottom-color:var(--terra)}
+
+form{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:36px 34px 32px}
+.tf-card{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:48px 38px;text-align:center}
+.tf-card h3{font-size:24px;margin-bottom:14px;letter-spacing:-.03em}
+.tf-card p{color:var(--ink-2);font-size:15.5px;margin:0 0 28px;max-width:36ch;margin-inline:auto}
+.tf-card .btn{width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+#form-fields > * + *{margin-top:18px}
+#form-fields > .consent{margin-top:22px}
+.fld{display:flex;flex-direction:column;gap:8px}
+.fld label{font-family:var(--title);font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--ink-3)}
+.fld input,.fld select,.fld textarea{
+  background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:13px 15px;font-size:15.5px;
+  transition:border-color .2s, box-shadow .2s;width:100%;font-family:var(--text);
+}
+.fld textarea{resize:vertical;min-height:96px}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 3px rgba(190,79,44,.12)}
+.consent{display:flex;gap:11px;align-items:flex-start;font-size:13px;color:var(--ink-3);line-height:1.55}
+.consent input{margin-top:3px;accent-color:var(--terra);width:15px;height:15px;flex:none}
+form .btn{width:100%;margin-top:24px}
+.form-ok{display:none;text-align:center;padding:26px 10px 6px}
+.form-ok.on{display:block;animation:fade .5s ease}
+.form-ok .tick{width:46px;height:46px;border-radius:50%;background:var(--olive);display:grid;place-items:center;margin:0 auto 18px}
+.form-ok .tick svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.form-ok h3{font-size:23px}
+.form-ok p{margin-top:10px;color:var(--ink-2);font-size:15px}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(251,246,236,.62);padding:62px 0 32px}
+.foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:38px;border-bottom:1px solid rgba(251,246,236,.13)}
+footer .brand b{color:var(--cream)}
+footer .brand span{color:rgba(251,246,236,.42)}
+.foot-tag{margin-top:14px;font-size:14.5px;max-width:30ch}
+.foot-cols{display:flex;gap:70px;flex-wrap:wrap}
+.foot-col h4{font-family:var(--title);font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,246,236,.4);margin-bottom:16px}
+.foot-col a{display:block;text-decoration:none;font-size:14.5px;margin-bottom:10px;transition:color .2s}
+.foot-col a:hover{color:var(--cream)}
+.foot-bot{padding-top:26px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;color:rgba(251,246,236,.4)}
+
+/* ============================================================
+   MOTION
+   ============================================================ */
+:root{ --ease:cubic-bezier(.16,.84,.44,1); --ease-soft:cubic-bezier(.33,1,.68,1) }
+
+/* --- reveals au scroll --- */
+.rv{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .85s var(--ease), transform .85s var(--ease);
+  transition-delay:var(--d,0ms);will-change:opacity,transform;
+}
+.rv[data-rv="left"]{transform:translateX(-38px)}
+.rv[data-rv="right"]{transform:translateX(38px)}
+.rv[data-rv="scale"]{transform:scale(.955) translateY(18px)}
+.rv[data-rv="up"]{transform:translateY(44px)}
+.rv[data-rv="none"]{opacity:1;transform:none}
+.rv.in{opacity:1;transform:none}
+
+/* photos : léger dézoom à l'apparition */
+.ph img{transform:scale(1.13);transition:transform 1.7s var(--ease);transition-delay:var(--d,0ms)}
+.rv.in .ph img,.shot.in .ph img,.in .ph img,.ph.in img{transform:scale(1)}
+
+/* --- barre de progression de lecture --- */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:120;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--terra),var(--brass));pointer-events:none}
+
+/* --- nav qui se compacte --- */
+.nav-in{transition:height .35s var(--ease)}
+header.nav.stuck .nav-in{height:62px}
+.brand i{transition:transform .35s var(--ease), box-shadow .35s var(--ease)}
+.brand:hover i{transform:scale(1.5);box-shadow:0 0 0 4px rgba(190,79,44,.18)}
+
+/* --- trait de l'eyebrow qui se dessine --- */
+.eyebrow::before{width:0;transition:width .75s var(--ease) .12s}
+.eyebrow.in::before{width:26px}
+.eyebrow.center::before{display:none}
+
+/* --- reflet sur les boutons --- */
+.btn{position:relative;overflow:hidden;isolation:isolate}
+.btn::after{
+  content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;z-index:-1;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);
+  transform:skewX(-20deg);transition:left .75s var(--ease-soft);
+}
+.btn-ghost::after{background:linear-gradient(100deg,transparent,rgba(190,79,44,.14),transparent)}
+.btn:hover::after{left:135%}
+
+/* --- entrée du hero --- */
+@keyframes riseIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes photoIn{from{opacity:0;transform:translateY(34px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes mailIn{from{opacity:0;transform:translateY(38px) translateX(-14px) rotate(-3deg)}to{opacity:1;transform:none}}
+@keyframes popIn{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
+.anim .hero [data-in]{opacity:0;animation:riseIn .95s var(--ease) forwards;animation-delay:var(--d,0ms)}
+.anim .hero-photo{opacity:0;animation:photoIn 1.15s var(--ease) .22s forwards}
+.anim .hero-photo img{transform:scale(1.16);animation:zoomOut 2s var(--ease) .3s forwards}
+@keyframes zoomOut{to{transform:scale(1)}}
+.anim .mail{opacity:0;animation:mailIn 1.05s var(--ease) .62s forwards}
+.anim .kpi{opacity:0;animation:popIn .7s var(--ease) .95s forwards, bob 7s ease-in-out 1.7s infinite}
+.anim .hero-badge{opacity:0;animation:popIn .6s var(--ease) .8s forwards}
+.hero-badge i{animation:blink 2.6s ease-in-out infinite}
+@keyframes blink{0%,100%{box-shadow:0 0 0 3px rgba(76,90,65,.18)}50%{box-shadow:0 0 0 7px rgba(76,90,65,.05)}}
+
+/* --- flottement continu --- */
+.mail{animation:drift 9s ease-in-out 1.6s infinite}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.mail-btn{transition:transform .3s var(--ease), box-shadow .3s var(--ease)}
+.hero-visual:hover .mail-btn{transform:translateY(-2px);box-shadow:0 8px 18px -8px rgba(190,79,44,.9)}
+
+/* --- inclinaison au survol (souris uniquement) --- */
+@media (hover:hover) and (pointer:fine){
+  .hero-visual{transform-style:preserve-3d;transition:transform .6s var(--ease-soft)}
+}
+
+/* --- compteurs --- */
+.stat .v{font-variant-numeric:tabular-nums}
+
+/* --- ligne qui se dessine sur les étapes --- */
+.steps{position:relative}
+.steps::after{content:"";position:absolute;top:-1.5px;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--terra),var(--brass));transition:width 1.5s var(--ease) .15s;border-radius:2px}
+.steps.in::after{width:100%}
+.step::before{transform:scale(0);transition:transform .5s var(--ease);transition-delay:calc(var(--i,0) * 260ms + 250ms)}
+.steps.in .step::before{transform:scale(1)}
+
+/* --- icônes des cartes --- */
+.card .ico{transition:transform .45s var(--ease), color .3s}
+.card:hover .ico{transform:translateY(-3px) rotate(-6deg) scale(1.08)}
+
+/* --- bandeau défilant --- */
+.ticker{border-block:1px solid var(--line);background:var(--paper);overflow:hidden;padding:15px 0;position:relative}
+.ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
+.ticker::before{left:0;background:linear-gradient(90deg,var(--paper),transparent)}
+.ticker::after{right:0;background:linear-gradient(270deg,var(--paper),transparent)}
+.ticker-track{display:flex;width:max-content;animation:slide 42s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-group{display:flex;align-items:center;gap:38px;padding-right:38px}
+.ticker-group span{
+  font-family:var(--title);font-size:12.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-3);white-space:nowrap;display:flex;align-items:center;gap:38px;
+}
+.ticker-group span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--terra-l);flex:none}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* --- diptyque samedi / mardi --- */
+.shot .ph{transition:filter 1.2s var(--ease)}
+.shot.dim .ph{filter:saturate(1) brightness(1)}
+.shot.dim.in .ph{filter:saturate(.62) brightness(.8)}
+.shot .cap > *{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.shot.in .cap > *{opacity:1;transform:none}
+.shot.in .cap .d{transition-delay:.35s}
+.shot.in .cap .n{transition-delay:.45s}
+.shot.in .cap .s{transition-delay:.55s}
+.shot{transition:transform .6s var(--ease-soft), box-shadow .6s var(--ease-soft)}
+.shot:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+
+/* --- témoignages --- */
+.stars svg{opacity:0;transform:scale(.4) rotate(-25deg);transition:opacity .4s var(--ease), transform .5s var(--ease)}
+.testi.in .stars svg{opacity:1;transform:none}
+.testi.in .stars svg:nth-child(1){transition-delay:.25s}
+.testi.in .stars svg:nth-child(2){transition-delay:.32s}
+.testi.in .stars svg:nth-child(3){transition-delay:.39s}
+.testi.in .stars svg:nth-child(4){transition-delay:.46s}
+.testi.in .stars svg:nth-child(5){transition-delay:.53s}
+.testi .who .ph{transition:transform .5s var(--ease)}
+.testi:hover .who .ph{transform:scale(1.07) rotate(3deg)}
+
+/* --- liste de l'offre --- */
+.plan li{opacity:0;transform:translateX(-10px);transition:opacity .5s var(--ease), transform .5s var(--ease)}
+.plan.in li{opacity:1;transform:none}
+.plan.in li:nth-child(1){transition-delay:.2s}
+.plan.in li:nth-child(2){transition-delay:.27s}
+.plan.in li:nth-child(3){transition-delay:.34s}
+.plan.in li:nth-child(4){transition-delay:.41s}
+.plan.in li:nth-child(5){transition-delay:.48s}
+.plan.in li:nth-child(6){transition-delay:.55s}
+.plan{transition:transform .5s var(--ease-soft), box-shadow .5s var(--ease-soft), border-color .3s}
+.plan:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.plan.hi:hover{transform:translateY(-8px)}
+
+/* --- accordéon FAQ --- */
+.qa{border-bottom:1px solid var(--line)}
+.qa h3{margin:0;font-size:inherit;font-weight:inherit;letter-spacing:normal}
+.qa-q{
+  width:100%;background:none;border:0;text-align:left;cursor:pointer;
+  padding:25px 46px 25px 0;position:relative;color:inherit;
+  font-family:var(--title);font-size:19.5px;font-weight:500;line-height:1.35;letter-spacing:-.025em;
+  transition:color .25s;
+}
+.qa-q:hover{color:var(--terra-d)}
+.qa-q::after,.qa-q::before{
+  content:"";position:absolute;right:8px;top:50%;background:var(--ink-3);border-radius:2px;
+  transition:transform .4s var(--ease), background .25s;
+}
+.qa-q::after{width:13px;height:2px;transform:translateY(-50%)}
+.qa-q::before{width:2px;height:13px;right:13.5px;transform:translateY(-50%)}
+.qa.open .qa-q::before{transform:translateY(-50%) rotate(90deg) scaleX(0)}
+.qa.open .qa-q::after{background:var(--terra)}
+.qa.open .qa-q{color:var(--terra-d)}
+.qa-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.qa.open .qa-body{grid-template-rows:1fr}
+.qa-inner{overflow:hidden}
+.qa-inner p{
+  padding:0 15% 28px 0;color:var(--ink-2);font-size:16px;
+  opacity:0;transform:translateY(-8px);transition:opacity .45s var(--ease) .1s, transform .45s var(--ease) .1s;
+}
+.qa.open .qa-inner p{opacity:1;transform:none}
+
+/* --- calculateur --- */
+.out-big{transition:transform .3s var(--ease)}
+.out-big.tick{transform:scale(1.028)}
+.calc-out{position:relative;overflow:hidden}
+.calc-out::before{
+  content:"";position:absolute;top:-40%;right:-30%;width:70%;height:80%;border-radius:50%;
+  background:radial-gradient(circle,rgba(190,79,44,.22),transparent 68%);opacity:0;transition:opacity 1.2s var(--ease);
+}
+.calc.in .calc-out::before{opacity:1}
+.field .val{transition:color .25s}
+.field:focus-within .val{color:var(--terra-l)}
+
+/* --- bandeau photo --- */
+.band .ph img{transform:scale(1.18)}
+.band.in .ph img{transform:scale(1.04)}
+.band-in > *{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease), transform .9s var(--ease)}
+.band.in .band-in > *{opacity:1;transform:none}
+.band.in .band-in h2{transition-delay:.15s}
+.band.in .band-in p{transition-delay:.28s}
+.band.in .band-in .btn{transition-delay:.4s}
+
+/* --- champs de formulaire --- */
+.fld input,.fld select,.fld textarea{transition:border-color .25s, box-shadow .25s, transform .25s var(--ease)}
+.fld input:focus,.fld select:focus,.fld textarea:focus{transform:translateY(-1px)}
+.form-ok .tick{animation:popIn .5s var(--ease) both}
+
+/* --- flèche de défilement --- */
+.scroll-hint{
+  position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-family:var(--title);font-size:10.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);
+  animation:fadeUp 1s var(--ease) 1.6s both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translate(-50%,14px)}to{opacity:.9;transform:translate(-50%,0)}}
+.scroll-hint span{width:1px;height:34px;background:linear-gradient(180deg,var(--line),transparent);position:relative;overflow:hidden}
+.scroll-hint span::after{content:"";position:absolute;top:-34px;left:0;width:1px;height:34px;background:var(--terra);animation:trail 2.4s ease-in-out infinite}
+@keyframes trail{0%{top:-34px}60%,100%{top:34px}}
+
+@media (max-width:1080px){ .scroll-hint{display:none} }
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition-duration:.01ms !important;transition-delay:0ms !important}
+  .rv,.band-in > *,.plan li,.shot .cap > *,.stars svg,.qa-inner p{opacity:1 !important;transform:none !important}
+  .ph img{transform:none !important}
+  .eyebrow::before{width:26px}
+  .steps::after{width:100%}
+  .step::before{transform:scale(1)}
+  .anim .hero [data-in],.anim .hero-photo,.anim .mail,.anim .kpi,.anim .hero-badge{opacity:1}
+  .scroll-hint{display:none}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .sec-head{display:block}
+  .sec-head h2{max-width:22ch;margin-top:20px}
+  .sec-head p{margin-top:20px;padding-bottom:0}
+  .hero-grid{grid-template-columns:1fr;gap:60px}
+  .hero-visual{max-width:520px;margin-inline:auto}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step:nth-child(3){border-left:0;padding-left:0}
+  .step:nth-child(3)::before{left:0}
+  .step:nth-child(3),.step:nth-child(4){border-top:1px solid var(--line);margin-top:-1px}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .testis{grid-template-columns:1fr;max-width:600px;margin-inline:auto}
+  .plans{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
+  .calc{grid-template-columns:1fr}
+  .calc-out{border-left:0;border-top:1px solid rgba(251,246,236,.14)}
+  .contact{grid-template-columns:1fr;gap:46px}
+}
+@media (max-width:960px){
+  .nav-links{display:none}
+  .nav-cta .btn{display:none}
+  .burger{display:block}
+  .nav-links.open{
+    display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--paper);border-block:1px solid var(--line);padding:8px 22px 18px;
+  }
+  .nav-links.open a{padding:14px 0;border-bottom:1px solid var(--line-2);width:100%;font-size:16px}
+}
+@media (max-width:760px){
+  body{font-size:16.5px}
+  .sec{padding:74px 0}
+  .stats-in{grid-template-columns:1fr}
+  .stat{border-right:0;border-bottom:1px solid var(--line);padding:32px 24px}
+  .stat-src{padding:22px 24px 26px}
+  .split{grid-template-columns:1fr}
+  .pains{grid-template-columns:1fr}
+  .pain,.pain:nth-child(odd),.pain:nth-child(even){padding:28px 0;border-right:0}
+  .steps{grid-template-columns:1fr}
+  .step,.step + .step{border-left:0;padding-left:0;padding-right:0;border-top:1px solid var(--line);margin-top:-1px}
+  .step + .step::before{left:0}
+  .step:first-child{border-top:0}
+  .cards{grid-template-columns:1fr}
+  .collect{grid-template-columns:1fr}
+  .calc-in,.calc-out{padding:32px 24px}
+  .row{grid-template-columns:1fr}
+  form{padding:26px 20px 24px}
+  details .ans{padding-right:0}
+  summary{font-size:18px}
+  .hero{padding:52px 0 74px}
+  .hero-visual{padding-left:0;padding-bottom:44px}
+  .mail{left:0;width:min(86%,300px)}
+  .kpi{right:0;bottom:60px}
+  .hero-badge{left:20px}
+}
+</style>
+</head>
+<body>
+
+<!--
+  ============================================================
+  PHOTOS : toutes les images pointent vers Unsplash (libres de droits).
+  À remplacer par vos propres photos de restaurants clients dès que possible.
+  ⚠ Les 3 portraits de la section « témoignages » sont des PLACEHOLDERS.
+    Les témoignages doivent être remplacés par de vrais retours clients,
+    avec leur accord et leur photo, avant toute mise en ligne.
+  ============================================================
+-->
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand"><b>L'Habitué</b><i></i><span>Restaurants</span></a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#methode">La méthode</a>
+      <a href="#base">Votre fichier</a>
+      <a href="#avis">Ils en parlent</a>
+      <a href="#calcul">Ce que ça rapporte</a>
+      <a href="#formules">L'offre</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="#" data-tf-popup="JgpgFGJh" data-tf-opacity="100" data-tf-iframe-props="title=Réservez votre échange - L'Habitué" data-tf-transitive-search-params data-tf-medium="snippet">Réserver 20 minutes</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow in" data-in style="--d:0ms">Fidélisation pour restaurants indépendants</p>
+      <h1 data-in style="--d:90ms">Vos clients vous adorent.<br>Ils vous <b>oublient</b>.</h1>
+      <p class="lead" data-in style="--d:230ms">Chaque semaine, on écrit et on envoie à votre fichier client l'email qui leur redonne envie de pousser la porte. Le plat du moment, la soirée du jeudi, l'offre qui remplit le mardi.<br><strong>Vous cuisinez. On remplit.</strong></p>
+      <div class="hero-cta" data-in style="--d:340ms">
+        <a class="btn btn-primary" href="#" data-tf-popup="JgpgFGJh" data-tf-opacity="100" data-tf-iframe-props="title=Réservez votre échange - L'Habitué" data-tf-transitive-search-params data-tf-medium="snippet">Réserver 20 minutes
+          <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#calcul">Calculer ce que ça rapporte</a>
+      </div>
+      <p class="hero-note" data-in style="--d:440ms">
+        <b>Mise en route en 10 jours</b><i class="dot-sep"></i>
+        <b>Vous validez chaque envoi</b><i class="dot-sep"></i>
+        <b>Sans engagement de durée</b>
+      </p>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-badge"><i></i> Salle pleine un mardi soir</div>
+      <div class="hero-photo ph">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1100&q=80" alt="Salle de restaurant chaleureuse remplie de clients" loading="eager" width="1100" height="1150">
+      </div>
+      <div class="mail">
+        <div class="mail-bar"><i></i><i></i><i></i><small>Jeudi, 10 : 42</small></div>
+        <div class="mail-body">
+          <div class="mail-from">
+            <div class="mail-av">C</div>
+            <div><b>Le Comptoir des Halles</b>à vous</div>
+          </div>
+          <h3 class="mail-subject">Ce soir, on sort la casserole en cuivre</h3>
+          <div class="mail-pic ph">
+            <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=600&q=80" alt="Assiette dressée servie en salle" loading="lazy" width="600" height="300">
+          </div>
+          <p class="mail-txt">La blanquette revient à la carte jusqu'à dimanche. Et comme on sait que vous l'attendiez : <b>20 % sur le menu du soir mardi et mercredi.</b></p>
+          <span class="mail-btn">Réserver ma table</span>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="k"><span data-count="31" data-prefix="+">+31</span></div>
+        <div class="l">couverts le mardi<br>après un envoi</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">Faites défiler<span></span></div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-in">
+      <div class="stat rv">
+        <div class="v"><span data-count="42" data-suffix=" €">42 €</span><sup>1</sup></div>
+        <div class="t">générés en moyenne pour 1 € investi en email marketing. Aucun autre canal ne s'en approche.</div>
+      </div>
+      <div class="stat rv">
+        <div class="v"><span data-count="43.7" data-dec="1" data-suffix=" %">43,7 %</span><sup>2</sup></div>
+        <div class="t">de taux d'ouverture moyen dans la restauration. Vos clients ouvrent vos emails, ils n'ouvrent plus vos posts.</div>
+      </div>
+      <div class="stat rv">
+        <div class="v"><span data-count="77" data-suffix=" %">77 %</span><sup>3</sup></div>
+        <div class="t">des clients membres d'un programme de fidélité déclarent revenir plus souvent dans le même établissement.</div>
+      </div>
+    </div>
+    <p class="stat-src">1. WifiTalents, benchmark email marketing tous secteurs. 2. Sender, taux d'ouverture moyen secteur restauration. 3. National Restaurant Association. Chiffres de marché fournis à titre indicatif : votre résultat dépend de votre fichier, de votre carte et de votre ville.</p>
+  </div>
+</section>
+
+<!-- ================= SAMEDI / MARDI ================= -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Le vrai problème</p>
+      <h2>Ce n'est pas un problème de cuisine. C'est un problème de mémoire.</h2>
+      <p>Un client satisfait qui ne revient pas n'a rien contre vous. Il a simplement pensé à autre chose vendredi soir. La différence entre un restaurant plein et un restaurant à moitié vide tient souvent à qui a pensé à lui en premier.</p>
+    </div>
+
+    <div class="split">
+      <div class="shot rv" data-rv="left">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1539056276907-dc946d5098c9?auto=format&fit=crop&w=1000&q=80" alt="Salle de restaurant pleine un samedi soir" loading="lazy" width="1000" height="690"></div>
+        <div class="cap">
+          <div class="d">Samedi, 20 h 30</div>
+          <div class="n">Complet, et vous refusez du monde</div>
+          <div class="s">Ce soir-là, personne n'a besoin de vous rappeler que vous existez.</div>
+        </div>
+      </div>
+      <div class="shot dim rv" data-rv="right">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1538333581680-29dd4752ddf2?auto=format&fit=crop&w=1000&q=80" alt="Salle de restaurant vide en début de semaine" loading="lazy" width="1000" height="690"></div>
+        <div class="cap">
+          <div class="d">Mardi, 20 h 30</div>
+          <div class="n">Douze couverts, quatre serveurs</div>
+          <div class="s">Vos charges, elles, sont exactement les mêmes que samedi.</div>
+        </div>
+      </div>
+    </div>
+    <p class="split-note">Ce sont les mêmes clients. Les mêmes plats. La seule chose qui change, c'est que le mardi, personne ne leur a donné de raison de venir.</p>
+
+    <div class="pains">
+      <div class="pain rv"><span class="mark">“</span><div><q>Le week-end je refuse du monde, et le mardi je tourne à 40 %. C'est ça qui me tue.</q><div class="who">Bistrot 45 couverts, centre-ville</div></div></div>
+      <div class="pain rv"><span class="mark">“</span><div><q>J'ai 4 200 abonnés sur Instagram. Je ne sais pas si un seul est déjà venu manger ici.</q><div class="who">Restaurant de quartier, 60 couverts</div></div></div>
+      <div class="pain rv"><span class="mark">“</span><div><q>Les plateformes me prennent une commission sur des clients qui étaient déjà les miens.</q><div class="who">Table bistronomique</div></div></div>
+      <div class="pain rv"><span class="mark">“</span><div><q>Écrire une newsletter ? Je finis le service à minuit. Le dimanche, je fais mes commandes.</q><div class="who">Chef-propriétaire, 2 services par jour</div></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ================= MÉTHODE ================= -->
+<section class="sec" id="methode">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">La méthode</p>
+      <h2>Quatre étapes. Une heure de votre temps par mois.</h2>
+      <p>On ne vous vend pas un outil de plus à apprendre. On fait le travail à votre place, et vous gardez la main sur ce qui part.</p>
+    </div>
+
+    <div class="steps rv" data-rv="none">
+      <div class="step rv" style="--i:0">
+        <span class="num">01</span>
+        <h3>On récupère votre fichier</h3>
+        <p>Vous avez déjà des emails clients dans votre logiciel de réservation, votre caisse ou un vieux carnet ? On les récupère, on les nettoie, on les met en conformité. Vous n'en avez pas ? On le construit à partir de zéro, à votre image.</p>
+      </div>
+      <div class="step rv" style="--i:1">
+        <span class="num">02</span>
+        <h3>On apprend votre maison</h3>
+        <p>Une visite, un café, votre carte. On note votre ton, vos produits, vos temps forts, vos jours creux, ce dont vous ne voulez surtout pas parler. Ce n'est pas un modèle générique : ça doit vous ressembler.</p>
+      </div>
+      <div class="step rv" style="--i:2">
+        <span class="num">03</span>
+        <h3>On écrit, vous validez</h3>
+        <p>Chaque semaine, vous recevez l'email prêt à partir. Une lecture de 30 secondes sur votre téléphone. Vous validez, vous corrigez ou vous décalez. Rien ne part sans votre accord.</p>
+      </div>
+      <div class="step rv" style="--i:3">
+        <span class="num">04</span>
+        <h3>On envoie et on mesure</h3>
+        <p>Envoi au bon jour, à la bonne heure. Puis on regarde qui a ouvert, qui a cliqué, et quel type de message remplit vraiment votre salle. On ajuste le mois suivant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEVIERS ================= -->
+<section class="sec-tight">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Le contenu</p>
+      <h2>Quatre leviers, un objectif : des couverts en plus.</h2>
+      <p>Chaque envoi a une intention commerciale précise. On ne publie pas pour publier.</p>
+    </div>
+    <div class="cards">
+      <div class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M20.6 8.4 12 3 3.4 8.4v7.2L12 21l8.6-5.4Z"/><path d="M8 11.2v3.4l4 2.4 4-2.4v-3.4"/><path d="m3.4 8.4 8.6 5.2 8.6-5.2"/></svg></div>
+        <h3>Offres qui remplissent les creux</h3>
+        <p>Une offre ciblée le mardi ou le mercredi, envoyée le bon jour aux bonnes personnes. Pas de braderie permanente : de la rareté, avec une date de fin.</p>
+        <span class="tag">Taux d'occupation</span>
+      </div>
+      <div class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 3v8a3 3 0 0 0 6 0V3"/><path d="M8 11v10"/><path d="M18 3c-1.7 1.6-2.5 3.7-2.5 6s.8 3.5 2.5 3.5V21"/></svg></div>
+        <h3>Menus et plats de saison</h3>
+        <p>La nouvelle carte, le retour d'un plat signature, le produit du moment. C'est ce qui fait monter le panier moyen, en mettant en avant ce qui vous rapporte le plus.</p>
+        <span class="tag">Panier moyen</span>
+      </div>
+      <div class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15.5" r="1.6"/></svg></div>
+        <h3>Soirées et événements</h3>
+        <p>Accord mets et vins, concert, Saint-Valentin, brunch de rentrée. Un événement annoncé trois fois se remplit. Annoncé une fois, il fait un flop.</p>
+        <span class="tag">Réservations</span>
+      </div>
+      <div class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3.5 14.4 9l5.6.5-4.3 3.9 1.3 5.6L12 16.1 6.9 19l1.3-5.6L4 9.5 9.6 9Z"/></svg></div>
+        <h3>Nouveautés et coulisses</h3>
+        <p>Un nouveau producteur, l'arrivée du second, les travaux de la terrasse. C'est ce qui transforme un client de passage en habitué qui vous recommande.</p>
+        <span class="tag">Fidélisation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BANDEAU DÉFILANT ================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-group">
+      <span>Bistrots</span><span>Brasseries</span><span>Tables bistronomiques</span><span>Trattorias</span>
+      <span>Bars à vin</span><span>Restaurants de quartier</span><span>Crêperies</span><span>Cuisine de marché</span>
+      <span>Pizzerias de quartier</span><span>Terrasses</span>
+    </div>
+    <div class="ticker-group">
+      <span>Bistrots</span><span>Brasseries</span><span>Tables bistronomiques</span><span>Trattorias</span>
+      <span>Bars à vin</span><span>Restaurants de quartier</span><span>Crêperies</span><span>Cuisine de marché</span>
+      <span>Pizzerias de quartier</span><span>Terrasses</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= BASE CLIENTS ================= -->
+<section class="sec" id="base">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Votre fichier client</p>
+      <h2>Vous n'avez pas de base clients ? C'est là que tout commence.</h2>
+      <p>C'est le seul actif marketing qui vous appartient vraiment. Ni algorithme, ni commission, ni plateforme qui change ses règles du jour au lendemain. Deux façons de la construire, on choisit ensemble.</p>
+    </div>
+
+    <div class="collect">
+      <div class="opt hi rv">
+        <span class="badge">Le plus efficace</span>
+        <div class="opt-pic">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1565650834520-0b48a5c83f43?auto=format&fit=crop&w=900&q=80" alt="Table de restaurant en bois avec chaises" loading="lazy" width="900" height="380"></div>
+          <div class="opt-float">
+            <svg viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true">
+              <rect width="29" height="29" fill="#17130F"/>
+              <g fill="#FBF6EC">
+                <path d="M1 1h7v7H1zm1 1v5h5V2z"/><rect x="3" y="3" width="3" height="3"/>
+                <path d="M21 1h7v7h-7zm1 1v5h5V2z"/><rect x="23" y="3" width="3" height="3"/>
+                <path d="M1 21h7v7H1zm1 1v5h5v-5z"/><rect x="3" y="23" width="3" height="3"/>
+                <rect x="10" y="1" width="1" height="1"/><rect x="12" y="1" width="2" height="1"/><rect x="16" y="1" width="1" height="1"/>
+                <rect x="11" y="3" width="1" height="2"/><rect x="13" y="2" width="1" height="3"/><rect x="15" y="3" width="2" height="1"/><rect x="17" y="4" width="1" height="2"/>
+                <rect x="10" y="6" width="2" height="1"/><rect x="14" y="6" width="1" height="2"/><rect x="16" y="7" width="2" height="1"/>
+                <rect x="1" y="10" width="2" height="1"/><rect x="4" y="10" width="1" height="2"/><rect x="6" y="11" width="2" height="1"/>
+                <rect x="1" y="13" width="1" height="2"/><rect x="3" y="14" width="2" height="1"/><rect x="6" y="13" width="1" height="1"/>
+                <rect x="2" y="16" width="1" height="2"/><rect x="4" y="17" width="2" height="1"/><rect x="7" y="16" width="1" height="2"/>
+                <rect x="10" y="10" width="2" height="2"/><rect x="13" y="9" width="1" height="3"/><rect x="15" y="10" width="2" height="1"/><rect x="18" y="9" width="1" height="2"/>
+                <rect x="10" y="13" width="1" height="2"/><rect x="12" y="14" width="3" height="1"/><rect x="16" y="13" width="1" height="2"/><rect x="18" y="14" width="2" height="1"/>
+                <rect x="11" y="16" width="2" height="1"/><rect x="14" y="16" width="1" height="2"/><rect x="17" y="17" width="2" height="1"/>
+                <rect x="10" y="19" width="1" height="2"/><rect x="13" y="19" width="2" height="1"/><rect x="16" y="20" width="1" height="1"/><rect x="19" y="19" width="1" height="2"/>
+                <rect x="21" y="10" width="1" height="2"/><rect x="23" y="11" width="2" height="1"/><rect x="26" y="10" width="2" height="1"/>
+                <rect x="22" y="13" width="2" height="1"/><rect x="25" y="14" width="1" height="2"/><rect x="27" y="13" width="1" height="1"/>
+                <rect x="21" y="16" width="1" height="2"/><rect x="24" y="17" width="2" height="1"/><rect x="27" y="16" width="1" height="2"/>
+                <rect x="10" y="22" width="2" height="1"/><rect x="13" y="22" width="1" height="2"/><rect x="15" y="23" width="2" height="1"/><rect x="18" y="22" width="1" height="2"/>
+                <rect x="21" y="21" width="2" height="1"/><rect x="24" y="22" width="1" height="2"/><rect x="26" y="21" width="1" height="2"/>
+                <rect x="11" y="25" width="1" height="2"/><rect x="14" y="26" width="2" height="1"/><rect x="17" y="25" width="1" height="2"/><rect x="20" y="26" width="1" height="1"/>
+                <rect x="22" y="25" width="2" height="1"/><rect x="25" y="26" width="1" height="1"/><rect x="27" y="25" width="1" height="2"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="opt-inner">
+          <h3>Le QR code à votre image</h3>
+          <p>Un QR code dessiné à vos couleurs, posé sur la table, la carte, l'addition ou la vitrine. Le client scanne, laisse son prénom et son email en 8 secondes, et reçoit une attention pour sa prochaine visite.</p>
+          <ul>
+            <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Supports imprimés dessinés sur mesure : chevalet de table, carton d'addition, sticker vitrine, encart de carte.</span></li>
+            <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Page d'inscription à votre nom, avec vos photos, pas un formulaire générique.</span></li>
+            <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Collecte automatique, en continu, sans que votre équipe ait à saisir quoi que ce soit.</span></li>
+            <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Consentement recueilli proprement, conforme RGPD dès la première ligne.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="opt rv">
+        <div class="opt-pic">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1538334421852-687c439c92f4?auto=format&fit=crop&w=900&q=80" alt="Tables et chaises en bois dans une salle de restaurant" loading="lazy" width="900" height="380"></div>
+          <div class="opt-float sheet">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 9h17M3.5 14.5h17M9.5 3.5v17M15 3.5v17"/></svg>
+          </div>
+        </div>
+        <div class="opt-inner">
+          <h3>Le tableau partagé</h3>
+          <p>La version zéro friction pour démarrer tout de suite. Un tableau en ligne partagé entre vous et nous : votre équipe y note les emails collectés en salle, on les intègre et on s'occupe du reste.</p>
+          <ul>
+            <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Aucun logiciel à installer, aucune formation, ça marche depuis un téléphone.</span></li>
+            <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Idéal pour tester la démarche sur un premier mois avant d'investir dans les supports.</span></li>
+            <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Nettoyage, dédoublonnage et vérification des adresses de notre côté.</span></li>
+            <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>On peut basculer sur les QR codes plus tard, sans rien perdre.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TÉMOIGNAGES ================= -->
+<section class="sec testi-sec" id="avis">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <p class="eyebrow center">Ils en parlent mieux que nous</p>
+      <h2>Des restaurateurs, pas des marketeurs.</h2>
+      <p>Trois maisons, trois quartiers, trois façons de remplir la semaine.</p>
+    </div>
+
+    <div class="testis">
+      <div class="testi rv">
+        <div class="stars"><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg></div>
+        <blockquote>« Mon mardi soir est passé de 14 à 38 couverts en deux mois. C'est ce service-là qui paie tout le reste. »</blockquote>
+        <p class="detail">On avait déjà les emails dans le logiciel de résa, on ne s'en servait jamais. Aujourd'hui je valide l'email du jeudi entre deux services et je vois les réservations tomber le soir même.</p>
+        <div class="who">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?auto=format&fit=crop&w=200&h=200&q=80" alt="Portrait de restauratrice" loading="lazy" width="100" height="100"></div>
+          <div><div class="n">Claire M.</div><div class="r">Bistrot 52 couverts</div></div>
+        </div>
+      </div>
+
+      <div class="testi rv">
+        <div class="stars"><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg></div>
+        <blockquote>« Je suis parti de rien. 640 emails collectés en quatre mois avec les QR codes sur les tables. »</blockquote>
+        <p class="detail">Je pensais que les clients ne joueraient pas le jeu. En fait ils scannent pendant qu'ils attendent l'addition. Le fichier est à moi, personne ne me prend de commission dessus.</p>
+        <div class="who">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1689588532679-4bb5fdd8f6d5?auto=format&fit=crop&w=200&h=200&q=80" alt="Portrait de chef-propriétaire" loading="lazy" width="100" height="100"></div>
+          <div><div class="n">Sofiane B.</div><div class="r">Cuisine de marché</div></div>
+        </div>
+      </div>
+
+      <div class="testi rv">
+        <div class="stars"><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg><svg viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.5 6 .5-4.5 4 1.4 5.9L10 14.4 4.6 17.5 6 11.6l-4.5-4 6-.5Z"/></svg></div>
+        <blockquote>« Nos soirées accord mets et vins se remplissent maintenant en 48 heures. Avant, on suppliait sur Instagram. »</blockquote>
+        <p class="detail">Le vrai changement, c'est le temps que ça me prend : cinq minutes le jeudi matin. Je n'aurais jamais tenu le rythme toute seule.</p>
+        <div class="who">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1556745750-68295fefafc5?auto=format&fit=crop&w=200&h=200&q=80" alt="Portrait de gérante de restaurant" loading="lazy" width="100" height="100"></div>
+          <div><div class="n">Léa D.</div><div class="r">Table bistronomique</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="testi-note">Témoignages recueillis auprès de restaurants accompagnés. Prénom et initiale à leur demande.</p>
+  </div>
+</section>
+
+<!-- ================= CALCULATEUR ================= -->
+<section class="sec calc-sec" id="calcul">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Le calcul, sans promesse en l'air</p>
+      <h2>Faites tourner vos propres chiffres.</h2>
+      <p>Pas de statistique de brochure : vos couverts, votre ticket moyen, un taux de réactivation volontairement prudent. Bougez les curseurs.</p>
+    </div>
+
+    <div class="calc rv">
+      <div class="calc-in">
+        <div class="field">
+          <div class="field-top">
+            <label for="c-base">Emails dans votre fichier client</label>
+            <span class="val" id="v-base">800</span>
+          </div>
+          <input type="range" id="c-base" min="150" max="5000" step="50" value="800">
+          <p class="hint">Une salle de 50 couverts constitue en général 600 à 1 200 emails la première année.</p>
+        </div>
+
+        <div class="field">
+          <div class="field-top">
+            <label for="c-ticket">Ticket moyen par couvert</label>
+            <span class="val" id="v-ticket">32 €</span>
+          </div>
+          <input type="range" id="c-ticket" min="12" max="120" step="1" value="32">
+          <p class="hint">Boissons comprises, tous services confondus.</p>
+        </div>
+
+        <div class="field">
+          <div class="field-top">
+            <label for="c-taux">Clients qui reviennent grâce à un email, par mois</label>
+            <span class="val" id="v-taux">3 %</span>
+          </div>
+          <input type="range" id="c-taux" min="1" max="10" step="0.5" value="3">
+          <p class="hint">On travaille sur une base de 3 %. Au-delà de 6 %, c'est un très bon fichier bien animé.</p>
+        </div>
+
+        <div class="field">
+          <div class="field-top">
+            <label for="c-pax">Personnes par réservation</label>
+            <span class="val" id="v-pax">2,2</span>
+          </div>
+          <input type="range" id="c-pax" min="1" max="5" step="0.1" value="2.2">
+          <p class="hint">Un client qui revient ne revient presque jamais seul.</p>
+        </div>
+      </div>
+
+      <div class="calc-out">
+        <p class="out-label">Chiffre d'affaires additionnel</p>
+        <p class="out-big" id="out-year">20 300 <span>€ / an</span></p>
+        <p class="out-sub" id="out-sub">Soit environ 1 690 € de plus chaque mois, sans un seul couvert volé à vos week-ends pleins.</p>
+
+        <div class="out-rows">
+          <div class="out-row"><span>Réservations générées / mois</span><span id="out-resa">24</span></div>
+          <div class="out-row"><span>Couverts additionnels / mois</span><span id="out-cvt">53</span></div>
+          <div class="out-row"><span>CA additionnel / mois</span><span id="out-month">1 690 €</span></div>
+          <div class="out-row"><span>Couverts additionnels / an</span><span id="out-cvty">634</span></div>
+        </div>
+
+        <p class="calc-note">Estimation basée uniquement sur les valeurs que vous avez saisies. Elle ne tient compte ni de la hausse du panier moyen liée aux mises en avant, ni des clients ramenés par le bouche-à-oreille, ni des commissions de plateformes évitées. On préfère annoncer moins et livrer plus.</p>
+
+        <div class="calc-cta">
+          <a class="btn btn-primary" href="#rdv">Vérifier ces chiffres avec nous
+            <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OFFRE ================= -->
+<section class="sec" id="formules">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <p class="eyebrow center">L'offre</p>
+      <h2>Une offre. Un prix clair.</h2>
+      <p>79 € HT par mois, quelle que soit la taille de votre salle. Un seul forfait, sans surprise, sans engagement de durée.</p>
+    </div>
+
+    <div class="plans one">
+      <div class="plan hi rv">
+        <span class="badge">Sans engagement de durée</span>
+        <p class="kicker">L'offre L'Habitué</p>
+        <h3>La newsletter qui remplit votre salle</h3>
+        <p class="price">79 <span>€ HT / mois</span></p>
+        <p class="pitch">Un seul forfait, sans surprise. On récupère et on anime votre fichier client chaque semaine, vous gardez la main sur chaque envoi.</p>
+        <ul>
+          <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>1 newsletter par semaine, rédigée et envoyée à votre fichier client</span></li>
+          <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Reprise et nettoyage de votre fichier existant, ou construction depuis zéro</span></li>
+          <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Aide à la collecte de nouvelles adresses (tableau partagé ou QR code)</span></li>
+          <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Validation par vous avant chaque envoi</span></li>
+          <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Mise en conformité RGPD et gestion des désinscriptions</span></li>
+          <li><svg viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5"/></svg><span>Rapport mensuel : ouvertures, clics, retombées</span></li>
+        </ul>
+        <a class="btn btn-primary" href="#" data-tf-popup="JgpgFGJh" data-tf-opacity="100" data-tf-iframe-props="title=Réservez votre échange - L'Habitué" data-tf-transitive-search-params data-tf-medium="snippet">Réserver 20 minutes</a>
+      </div>
+    </div>
+    <p class="plans-foot">Facturation mensuelle, résiliable à tout moment avec un mois de préavis. Un seul restaurant accompagné par quartier : on ne travaille pas pour deux tables concurrentes dans la même rue.</p>
+  </div>
+</section>
+
+<!-- ================= BANDEAU PHOTO ================= -->
+<section class="band">
+  <div class="ph" data-par="0.14"><img src="https://images.unsplash.com/photo-1761517394803-aab6df3f9095?auto=format&fit=crop&w=1800&q=80" alt="Devanture de restaurant avec store et terrasse" loading="lazy" width="1800" height="600"></div>
+  <div class="band-in">
+    <h2>La porte s'ouvre plus souvent quand quelqu'un donne une raison de la pousser.</h2>
+    <p>C'est exactement notre travail, une fois par semaine, à votre place.</p>
+    <a class="btn btn-light" href="#" data-tf-popup="JgpgFGJh" data-tf-opacity="100" data-tf-iframe-props="title=Réservez votre échange - L'Habitué" data-tf-transitive-search-params data-tf-medium="snippet">Réserver 20 minutes
+      <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="sec" id="faq">
+  <div class="wrap narrow">
+    <div class="sec-head solo rv">
+      <p class="eyebrow">Les questions qu'on nous pose</p>
+      <h2>Ce que vous vous demandez déjà.</h2>
+    </div>
+
+    <div class="faq">
+      <div class="qa rv">
+        <h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="qa-1" id="qb-1">Je n'ai aucun fichier client. C'est mort ?</button></h3>
+        <div class="qa-body" id="qa-1" role="region" aria-labelledby="qb-1">
+          <div class="qa-inner"><p>Au contraire, c'est le cas le plus fréquent et le plus intéressant. On part de zéro et on construit votre base avec vous : QR codes sur les tables, tableau partagé pour l'équipe en salle, récupération des emails déjà présents dans votre logiciel de réservation ou votre caisse. Comptez quelques centaines d'adresses en deux à trois mois pour une salle qui tourne normalement. Cette base vous appartient, définitivement.</p></div>
+        </div>
+      </div>
+      <div class="qa rv">
+        <h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="qa-2" id="qb-2">Mes clients ne vont pas trouver ça intrusif ?</button></h3>
+        <div class="qa-body" id="qa-2" role="region" aria-labelledby="qb-2">
+          <div class="qa-inner"><p>Un email par semaine, sur un restaurant qu'on a aimé, avec une vraie information dedans, ce n'est pas du spam : c'est une invitation. La règle qu'on s'impose est simple, jamais d'envoi sans quelque chose à dire. Si la semaine est vide, on ne l'envoie pas. Et chaque email contient un lien de désinscription visible, en un clic. Les gens qui partent ne seraient de toute façon pas revenus.</p></div>
+        </div>
+      </div>
+      <div class="qa rv">
+        <h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="qa-3" id="qb-3">Et le RGPD ?</button></h3>
+        <div class="qa-body" id="qa-3" role="region" aria-labelledby="qb-3">
+          <div class="qa-inner"><p>C'est traité dès la première ligne. Consentement explicite recueilli au moment de l'inscription, mention d'information claire, registre des consentements, désinscription en un clic, suppression sur demande. On vous fournit les mentions à afficher sur vos supports. Vous restez propriétaire de votre fichier et pouvez le récupérer à tout moment, dans un format exploitable.</p></div>
+        </div>
+      </div>
+      <div class="qa rv">
+        <h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="qa-4" id="qb-4">Concrètement, ça me prend combien de temps ?</button></h3>
+        <div class="qa-body" id="qa-4" role="region" aria-labelledby="qb-4">
+          <div class="qa-inner"><p>Une visite d'une heure au démarrage, puis environ cinq minutes par semaine pour relire et valider l'email depuis votre téléphone. Vous nous prévenez de vos temps forts quand vous les connaissez, un message suffit. Tout le reste est de notre côté : rédaction, mise en page, photos, envoi, suivi.</p></div>
+        </div>
+      </div>
+      <div class="qa rv">
+        <h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="qa-5" id="qb-5">Je m'engage sur combien de temps ?</button></h3>
+        <div class="qa-body" id="qa-5" role="region" aria-labelledby="qb-5">
+          <div class="qa-inner"><p>Aucun engagement de durée. C'est 79 € HT par mois, facturé au mois, et vous arrêtez quand vous voulez, avec un préavis d'un mois. On vous demande simplement de laisser trois mois à la démarche : le premier sert à construire et nettoyer la base, le deuxième à trouver le bon ton, le troisième à commencer à lire de vrais résultats.</p></div>
+        </div>
+      </div>
+      <div class="qa rv">
+        <h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="qa-6" id="qb-6">Comment je sais que ça marche vraiment ?</button></h3>
+        <div class="qa-body" id="qa-6" role="region" aria-labelledby="qb-6">
+          <div class="qa-inner"><p>On suit trois indicateurs seulement, ceux qui comptent : le nombre d'ouvertures, le nombre de clics vers la réservation, et surtout le remplissage de vos jours creux. Chaque offre est envoyée avec un code ou une mention à citer, ce qui permet de rattacher des couverts réels à un envoi précis. Vous recevez le bilan chaque mois, sans jargon.</p></div>
+        </div>
+      </div>
+      <div class="qa rv">
+        <h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="qa-7" id="qb-7">J'ai déjà un community manager pour Instagram.</button></h3>
+        <div class="qa-body" id="qa-7" role="region" aria-labelledby="qb-7">
+          <div class="qa-inner"><p>Les deux ne font pas le même travail. Instagram vous rend visible auprès de gens qui ne vous connaissent pas encore, et une plateforme décide qui voit vos publications. L'email s'adresse à des gens qui sont déjà venus, qui ont aimé, et il arrive directement dans leur boîte de réception. C'est de la fidélisation, pas de la notoriété. Le mieux, c'est d'avoir les deux : ils se nourrissent l'un l'autre.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="sec contact-sec" id="rdv">
+  <div class="wrap contact">
+    <div class="contact-aside rv">
+      <p class="eyebrow">Parlons-en</p>
+      <h2>Vingt minutes, et vous saurez si ça vaut le coup.</h2>
+      <p>On regarde ensemble votre carte, vos jours creux et ce que vous avez déjà comme emails clients. À la fin de l'échange, vous repartez avec une estimation chiffrée, même si vous ne travaillez pas avec nous.</p>
+      <ul class="aside-list">
+        <li><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.2"/><path d="M10 6v4.4l2.8 1.7"/></svg><span>Échange de 20 minutes, par téléphone ou sur place selon votre ville.</span></li>
+        <li><svg viewBox="0 0 20 20"><path d="M3.5 6.5h13v9h-13z"/><path d="m3.5 7 6.5 4.6L16.5 7"/></svg><span>Réponse sous 24 h ouvrées, par la personne qui suivra votre restaurant.</span></li>
+        <li><svg viewBox="0 0 20 20"><path d="M10 2.8 3.2 5.6v4.2c0 4 2.9 6.6 6.8 7.5 3.9-.9 6.8-3.5 6.8-7.5V5.6Z"/><path d="m7.4 9.8 2 2 3.4-3.8"/></svg><span>Aucune relance commerciale insistante. Un rappel, et c'est tout.</span></li>
+      </ul>
+      <div class="direct">
+        Vous préférez écrire directement ?<br>
+        <a href="mailto:loic.hachet@lhabitue.com">loic.hachet@lhabitue.com</a>
+      </div>
+    </div>
+
+    <div class="rv">
+      <div class="tf-card">
+        <h3>Prêt à en discuter ?</h3>
+        <p>Deux minutes pour répondre à quelques questions sur votre restaurant. On revient vers vous sous 24 heures ouvrées avec une première estimation chiffrée pour votre salle.</p>
+        <a class="btn btn-dark" href="#" data-tf-popup="JgpgFGJh" data-tf-opacity="100" data-tf-iframe-props="title=Réservez votre échange - L'Habitué" data-tf-transitive-search-params data-tf-medium="snippet">Réserver 20 minutes
+          <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#top" class="brand"><b>L'Habitué</b><i></i><span>Restaurants</span></a>
+        <p class="foot-tag">La newsletter hebdomadaire qui transforme vos clients de passage en habitués.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>L'offre</h4>
+          <a href="#methode">La méthode</a>
+          <a href="#base">Votre fichier client</a>
+          <a href="#calcul">Ce que ça rapporte</a>
+          <a href="#formules">L'offre</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <a href="#" data-tf-popup="JgpgFGJh" data-tf-opacity="100" data-tf-iframe-props="title=Réservez votre échange - L'Habitué" data-tf-transitive-search-params data-tf-medium="snippet">Réserver 20 minutes</a>
+          <a href="mailto:loic.hachet@lhabitue.com">loic.hachet@lhabitue.com</a>
+        </div>
+        <div class="foot-col">
+          <h4>Informations</h4>
+          <a href="#">Mentions légales</a>
+          <a href="#">Politique de confidentialité</a>
+          <a href="#faq">Questions fréquentes</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr">2026</span> L'Habitué. Tous droits réservés.</span>
+      <span>Fait pour les restaurants qui veulent remplir leur mardi soir.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var raf = window.requestAnimationFrame.bind(window);
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  if(!reduce) document.documentElement.classList.add('anim');
+
+  /* ============ NAV + BARRE DE PROGRESSION ============ */
+  var nav = document.getElementById('nav');
+  var bar = document.getElementById('progress');
+  var lastY = -1, ticking = false;
+
+  function onFrame(){
+    ticking = false;
+    var y = window.scrollY;
+    nav.classList.toggle('stuck', y > 12);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+    parallax(y);
+  }
+  function onScroll(){
+    if(window.scrollY === lastY) return;
+    lastY = window.scrollY;
+    if(!ticking){ ticking = true; raf(onFrame); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onFrame, {passive:true});
+  onFrame();
+
+  /* ============ PARALLAXE DOUCE ============ */
+  var parItems = [].slice.call(document.querySelectorAll('[data-par]'));
+  function parallax(){
+    if(reduce || !parItems || !parItems.length) return;
+    var vh = window.innerHeight;
+    for(var i=0;i<parItems.length;i++){
+      var el = parItems[i];
+      var r = el.getBoundingClientRect();
+      if(r.bottom < -200 || r.top > vh + 200) continue;
+      var progress = (r.top + r.height/2 - vh/2) / vh;
+      el.style.transform = 'translate3d(0,' + (progress * parseFloat(el.dataset.par) * 100).toFixed(2) + 'px,0)';
+    }
+  }
+
+  /* ============ APPARITIONS AU SCROLL ============ */
+  var groups = {};
+  var revealables = [].slice.call(document.querySelectorAll('.rv'));
+  revealables.forEach(function(el){
+    var key = el.parentNode;
+    var idx = groups.has ? 0 : 0;
+    if(!key.__rvCount) key.__rvCount = 0;
+    var order = key.__rvCount++;
+    el.style.setProperty('--d', Math.min(order, 5) * 85 + 'ms');
+  });
+
+  var targets = revealables
+    .concat([].slice.call(document.querySelectorAll('.eyebrow')))
+    .concat([].slice.call(document.querySelectorAll('.band, .calc')));
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, {threshold:.14, rootMargin:'0px 0px -6% 0px'});
+  targets.forEach(function(t){ io.observe(t); });
+
+  /* ============ COMPTEURS ============ */
+  var nf = new Intl.NumberFormat('fr-FR');
+  function fmt(v, dec){
+    return dec ? v.toFixed(dec).replace('.', ',') : nf.format(Math.round(v));
+  }
+  var counters = [].slice.call(document.querySelectorAll('[data-count]'));
+  var cIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      cIo.unobserve(en.target);
+      var el = en.target;
+      var to = parseFloat(el.dataset.count);
+      var dec = parseInt(el.dataset.dec || 0, 10);
+      var pre = el.dataset.prefix || '';
+      var suf = el.dataset.suffix || '';
+      if(reduce){ el.textContent = pre + fmt(to, dec) + suf; return; }
+      var dur = 1500, t0 = null;
+      (function step(ts){
+        if(t0 === null) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        var e = 1 - Math.pow(1 - p, 4);
+        el.textContent = pre + fmt(to * e, dec) + suf;
+        if(p < 1) raf(step);
+      })(performance.now ? performance.now() : Date.now());
+    });
+  }, {threshold:.6});
+  counters.forEach(function(c){ cIo.observe(c); });
+
+  /* ============ MENU MOBILE ============ */
+  var burger = document.getElementById('burger');
+  var links = document.getElementById('navlinks');
+  burger.addEventListener('click', function(){ links.classList.toggle('open'); });
+  links.addEventListener('click', function(e){ if(e.target.tagName === 'A') links.classList.remove('open'); });
+
+  /* ============ INCLINAISON DU VISUEL HERO ============ */
+  var visual = document.querySelector('.hero-visual');
+  if(visual && !reduce && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    var hero = document.querySelector('.hero');
+    hero.addEventListener('mousemove', function(e){
+      var r = visual.getBoundingClientRect();
+      var x = (e.clientX - r.left - r.width/2) / r.width;
+      var y = (e.clientY - r.top - r.height/2) / r.height;
+      visual.style.transform = 'perspective(1100px) rotateY(' + (x*4).toFixed(2) + 'deg) rotateX(' + (-y*4).toFixed(2) + 'deg)';
+    });
+    hero.addEventListener('mouseleave', function(){ visual.style.transform = ''; });
+  }
+
+  /* ============ ACCORDÉON FAQ ============ */
+  var qas = [].slice.call(document.querySelectorAll('.qa'));
+  qas.forEach(function(qa){
+    var btn = qa.querySelector('.qa-q');
+    btn.addEventListener('click', function(){
+      var open = qa.classList.contains('open');
+      qas.forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.qa-q').setAttribute('aria-expanded', 'false');
+      });
+      if(!open){
+        qa.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ============ CALCULATEUR ============ */
+  var el = function(id){ return document.getElementById(id); };
+  var ids = ['c-base','c-ticket','c-taux','c-pax'];
+  var inputs = ids.map(el);
+  var big = el('out-year');
+
+  function eur(n){ return nf.format(Math.round(n)) + ' €'; }
+
+  function paintTrack(inp){
+    var min = +inp.min, max = +inp.max;
+    var p = ((+inp.value - min) / (max - min)) * 100;
+    inp.style.background = 'linear-gradient(90deg, var(--terra) 0%, var(--terra) ' + p + '%, rgba(251,246,236,.22) ' + p + '%, rgba(251,246,236,.22) 100%)';
+  }
+
+  /* valeurs affichées qui rattrapent doucement la cible */
+  var shown = null, target = null, animating = false;
+
+  function targets_(){
+    var base = +el('c-base').value, ticket = +el('c-ticket').value;
+    var taux = +el('c-taux').value, pax = +el('c-pax').value;
+    var resa = base * (taux/100);
+    var cvt = resa * pax;
+    var caM = cvt * ticket;
+    return { resa:resa, cvt:cvt, caM:caM, caA:caM*12, cvtA:cvt*12 };
+  }
+
+  function paint(v){
+    big.innerHTML = nf.format(Math.round(v.caA/100)*100) + ' <span>€ / an</span>';
+    el('out-sub').textContent = 'Soit environ ' + eur(Math.round(v.caM/10)*10) + ' de plus chaque mois, sans un seul couvert volé à vos week-ends pleins.';
+    el('out-resa').textContent = nf.format(Math.round(v.resa));
+    el('out-cvt').textContent = nf.format(Math.round(v.cvt));
+    el('out-month').textContent = eur(v.caM);
+    el('out-cvty').textContent = nf.format(Math.round(v.cvtA));
+  }
+
+  function loop(){
+    var done = true;
+    for(var k in target){
+      var d = target[k] - shown[k];
+      if(Math.abs(d) > Math.max(target[k] * 0.0015, 0.4)){ shown[k] += d * 0.22; done = false; }
+      else shown[k] = target[k];
+    }
+    paint(shown);
+    if(!done) raf(loop); else animating = false;
+  }
+
+  function refresh(instant){
+    ids.forEach(function(id){
+      var inp = el(id);
+      paintTrack(inp);
+    });
+    el('v-base').textContent = nf.format(+el('c-base').value);
+    el('v-ticket').textContent = (+el('c-ticket').value) + ' €';
+    el('v-taux').textContent = (+el('c-taux').value).toString().replace('.', ',') + ' %';
+    el('v-pax').textContent = (+el('c-pax').value).toFixed(1).replace('.', ',');
+
+    target = targets_();
+    if(instant || reduce || !shown){ shown = JSON.parse(JSON.stringify(target)); paint(shown); return; }
+    big.classList.add('tick');
+    setTimeout(function(){ big.classList.remove('tick'); }, 190);
+    if(!animating){ animating = true; raf(loop); }
+  }
+
+  inputs.forEach(function(inp){ inp.addEventListener('input', function(){ refresh(false); }); });
+  refresh(true);
+})();
+</script>
+</body>
+</html>
